@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="reviews-container d-flex">
+            <div class="row review">
+                <div class="col-12">
+                    <h1>Booking</h1>
+                    <a href="#" class="showReviewScore" id="booking_button">Show Reviews</a>
+                </div>
+            </div>
+            <div class="row review">
+                <div class="col-12">
+                    <h1>TripAdvisor</h1>
+                    <a href="#" class="showReviewScore" id="tripadvisor_button">Show Reviews</a>
+                </div>
+            </div>
+            <div class="row review">
+                <div class="col-12">
+                    <h1>Google</h1>
+                    <a href="#" class="showReviewScore" id="google_button">Show Reviews</a>
+                </div>
+            </div>
+        </div>
+            <div class="table-reviews">
+                <table id="reviews-table" class="table table-hover">
+                    <caption></caption>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Review positive</th>
+                            <th>Review negative</th>
+                            <th>Distribution</th>
+                            <th>Score 1</th>
+                            <th>Score 2</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+            </div>
+
+
+        <div class="table-reviews" id="table-reviews-category-container" style="display: none;">
+            <table id="reviews-table-category" class="table table-hover">
+                <caption></caption>
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Review positive</th>
+                        <th>Review negative</th>
+                        <th>Distribution</th>
+                        <th>Score 1</th>
+                        <th>Score 2</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                </tbody>
+        </div>
+    </div>
+        
+    </div>
+    <script src="js/jquery-3.6.3.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/excel.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.5/xlsx.full.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.5/jszip.js"></script>
+
+    <script>
+        let number_results = 0;
+        let time = 0;
+        let page = 0;
+        let items = [];
+
+        $(document).ready(function () {
+
+            DisplayTotalReviews("google")
+            DisplayTotalReviews("tripadvisor")
+            DisplayTotalReviews("booking")
+            
+        });
+
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        $(document).on("click", ".showReviewScore", function () {
+            let id = $(this).attr("id");
+            switch (id) {
+                case "booking_button":
+                    showReviewsScore("booking")
+                    break;
+                case "tripadvisor_button":
+                    showReviewsScore("tripadvisor")
+                    break;
+                case "google_button":
+                    showReviewsScore("google")
+                    break;
+            }
+        });
+
+    </script>
+</body>
+
+</html>
