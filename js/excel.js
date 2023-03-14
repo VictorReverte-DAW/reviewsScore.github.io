@@ -250,6 +250,14 @@ function getReviewsCategory(data, name) {
       let score2 = parseFloat((review.StaffService.cantPositive / total) * 100).toFixed(2);
       $("#staffService_review").append('<td class="positive">' + review.StaffService.cantPositive + '</td><td class="negative">' + review.StaffService.cantNegative + '</td>'+"<td>"+"<div class='w3-border' style='background-color:red'><div style='height:24px;width:"+score2+"%;background-color: green'>"+score2+"%</div></div></td>"+"<td class='score1'>" + score1 + "</td>" + "<td class='score2'>" + score2 + "%</td>")
     }
+    
+     if(review.OtherFacilities.cantPositive != 0 || review.OtherFacilities.cantNegative != 0){
+      table.append('<tr id="otherFacilities_review"><td>Other facilities</td></tr>')
+      let total = review.OtherFacilities.cantPositive + review.OtherFacilities.cantNegative;
+      let score1 = parseFloat((review.OtherFacilities.cantPositive - review.OtherFacilities.cantNegative) /total).toFixed(2);
+      let score2 = parseFloat((review.OtherFacilities.cantPositive / total) * 100).toFixed(2);
+      $("#otherFacilities_review").append('<td class="positive">' + review.OtherFacilities.cantPositive + '</td><td class="negative">' + review.OtherFacilities.cantNegative + '</td>'+"<td>"+"<div class='w3-border' style='background-color:red'><div style='height:24px;width:"+score2+"%;background-color: green'>"+score2+"%</div></div></td>"+"<td class='score1'>" + score1 + "</td>" + "<td class='score2'>" + score2 + "%</td>")
+    }
 
     if(review.Location.cantPositive != 0 || review.Location.cantNegative != 0){
       table.append('<tr id="location_review"><td>Location</td></tr>')
@@ -282,13 +290,7 @@ function getReviewsCategory(data, name) {
       let score2 = parseFloat((review.OverallExperience.cantPositive / total) * 100).toFixed(2);
       $("#overallExperience_review").append('<td class="positive">' + review.OverallExperience.cantPositive + '</td><td class="negative">' + review.OverallExperience.cantNegative + '</td>'+"<td>"+"<div class='w3-border' style='background-color:red'><div style='height:24px;width:"+score2+"%;background-color: green'>"+score2+"%</div></div></td>"+"<td class='score1'>" + score1 + "</td>" + "<td class='score2'>" + score2 + "%</td>")
     }
-    if(review.OtherFacilities.cantPositive != 0 || review.OtherFacilities.cantNegative != 0){
-      table.append('<tr id="otherFacilities_review"><td>Other facilities</td></tr>')
-      let total = review.OtherFacilities.cantPositive + review.OtherFacilities.cantNegative;
-      let score1 = parseFloat((review.OtherFacilities.cantPositive - review.OtherFacilities.cantNegative) /total).toFixed(2);
-      let score2 = parseFloat((review.OtherFacilities.cantPositive / total) * 100).toFixed(2);
-      $("#otherFacilities_review").append('<td class="positive">' + review.OtherFacilities.cantPositive + '</td><td class="negative">' + review.OtherFacilities.cantNegative + '</td>'+"<td>"+"<div class='w3-border' style='background-color:red'><div style='height:24px;width:"+score2+"%;background-color: green'>"+score2+"%</div></div></td>"+"<td class='score1'>" + score1 + "</td>" + "<td class='score2'>" + score2 + "%</td>")
-    }
+   
 
   });
   
